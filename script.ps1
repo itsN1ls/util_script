@@ -45,6 +45,7 @@ Show-CustomMenu
 # Functions that do some stuf
 
 function CleanTempAndPrefetchFiles {
+    Clear-Host
     # Clean current users temporary files
     Get-ChildItem -Path $env:TEMP | ForEach-Object {
         try {
