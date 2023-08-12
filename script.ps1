@@ -55,7 +55,7 @@ function CleanTempAndPrefetchFiles {
         try {
             Remove-Item -Path $_.FullName -Force -Recurse -ErrorAction Stop
         } catch {
-            # Write-Host "This is normal, an error occured deleting $($env:TEMP)\$($_.Name): $($_.Exception.Message)"
+            
         }
     }
     Write-Host "Deleted User Temp files successfully"
@@ -65,7 +65,7 @@ function CleanTempAndPrefetchFiles {
         try {
             Remove-Item -Path $_.FullName -Force -Recurse -ErrorAction Stop
         } catch {
-            # Write-Host "This is normal, an error occured deleting $($systemTempPath)\$($_.Name): $($_.Exception.Message)"
+            
         }
     }
     Write-Host "Deleted System Temp files successfully."
