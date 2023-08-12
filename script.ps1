@@ -44,6 +44,10 @@ function Show-OptimizationMenu
 Show-CustomMenu
 # Functions that do some stuf
 
+function ClearExit {
+    Clear-Host
+    exit
+}
 function CleanTempAndPrefetchFiles {
     Clear-Host
     # Clean current users temporary files
@@ -85,7 +89,7 @@ do {
                 switch ($downloadOption) {
                     '1' { 'Downloading something (download 1)' }
                     '2' { 'Downloading something (download 2)' }
-                    'q' {exit}
+                    'q' {ClearExit}
                 }
             } while ($downloadOption -ne 'B')
             Show-CustomMenu
@@ -97,7 +101,7 @@ do {
                 switch ($optimizationOption) {
                     '1' { 'Registry Tweaks Menu coming soon.' }
                     '2' {CleanTempAndPrefetchFiles}
-                    'q' {exit}
+                    'q' {ClearExit}
                 }
             } while ($optimizationOption -ne 'B')
             Show-CustomMenu
@@ -109,7 +113,7 @@ do {
             # Submenu 3 logic
         }
         'q' {
-            exit
+            ClearExit
         }
     }
 } while ($true)
