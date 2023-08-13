@@ -1,5 +1,14 @@
 # Menus
+function EntrySelection {
 
+    param (
+        [string]$key = 'default key',
+        [string]$value = 'default value'
+    ) 
+    Write-Host -NoNewline -ForegroundColor Yellow "${key}"
+    Write-Host "$value"
+
+}
 function Show-CustomMenu
 {
     param (
@@ -7,18 +16,11 @@ function Show-CustomMenu
     )
 
     Clear-Host
-    Write-Host -NoNewline -ForegroundColor Yellow "1: "
-    Write-Host "Download Stuff"
-    Write-Host -NoNewline -ForegroundColor Yellow "2: "
-    Write-Host "Optimization Stuff"
-    # Write-Host -NoNewline -ForegroundColor Yellow "3: "
-    # Write-Host "Submenu 2"
-    # Write-Host -NoNewline -ForegroundColor Yellow "4: "
-    # Write-Host "Submenu 3"
-    Write-Host -NoNewline -ForegroundColor Yellow "Q: "
-    Write-Host "Exit"
+    EntrySelection -key "1: " -value "Download Stuff"
+    EntrySelection -key "2: " -value "Optimization Stuff"
+    EntrySelection -key "Q: " -value "Exit"
     Write-Host ""
-    Write-host ""
+    Write-Host ""
 }
 
 function Show-DownloadMenu
@@ -28,7 +30,8 @@ function Show-DownloadMenu
     EntrySelection -key "1: " -value "Drivers"
     EntrySelection -key "2: " -value "Software"
     EntrySelection -key "B: " -value "Back to Main Menu"
-
+    Write-Host ""
+    Write-Host ""
 }
 
 
@@ -38,7 +41,8 @@ function Show-DriverDownloadMenu
     EntrySelection -key "1: " -value "Audio"
     EntrySelection -key "2: " -value "Graphics"
     EntrySelection -key "B: " -value "Back to Main Menu"
-
+    Write-Host ""
+    Write-Host ""
  
 
 }
@@ -49,7 +53,8 @@ function Show-OptimizationMenu
     EntrySelection -key "1: " -value "Registry Stuff"
     EntrySelection -key "2: " -value "Delete Temporary Files"
     EntrySelection -key "B: " -value "Back to Main Menu"
-
+    Write-Host ""
+    Write-Host ""
 }
 
 
@@ -63,16 +68,7 @@ function ClearExit {
 }
 
 
-function EntrySelection {
 
-    param (
-        [string]$key = 'default key',
-        [string]$value = 'default value'
-    ) 
-    Write-Host -NoNewline -ForegroundColor Yellow "${key}"
-    Write-Host "$value"
-
-}
 function CleanTempAndPrefetchFiles {
     Clear-Host
     # Clean current users temporary files
