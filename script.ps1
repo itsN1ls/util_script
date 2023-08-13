@@ -16,6 +16,9 @@ function Show-CustomMenu
     )
 
     Clear-Host
+    Write-Host -NoNewline "---------------   "
+    Write-Host -ForegroundColor Yellow "Main Menu" -NoNewline
+    Write-Host "   ---------------"
     EntrySelection -key "1: " -value "Download Stuff"
     EntrySelection -key "2: " -value "Optimization Stuff"
     EntrySelection -key "Q: " -value "Exit"
@@ -27,6 +30,9 @@ function Show-DownloadMenu
 {
 
     Clear-Host
+    Write-Host -NoNewline "---------------   "
+    Write-Host -ForegroundColor Yellow "Downloads" -NoNewline
+    Write-Host "   ---------------"
     EntrySelection -key "1: " -value "Drivers"
     EntrySelection -key "2: " -value "Software"
     EntrySelection -key "B: " -value "Back to Main Menu"
@@ -38,9 +44,12 @@ function Show-DownloadMenu
 function Show-DriverDownloadMenu
 {
     Clear-Host
+    Write-Host -NoNewline "---------------   "
+    Write-Host -ForegroundColor Yellow "Drivers" -NoNewline
+    Write-Host "   ---------------"
     EntrySelection -key "1: " -value "Audio"
     EntrySelection -key "2: " -value "Graphics"
-    EntrySelection -key "B: " -value "Back to Main Menu"
+    EntrySelection -key "B: " -value "Back to Download Menu"
     Write-Host ""
     Write-Host ""
  
@@ -50,6 +59,9 @@ function Show-OptimizationMenu
 {
 
     Clear-Host
+    Write-Host -NoNewline "---------------   "
+    Write-Host -ForegroundColor Yellow "Optimization" -NoNewline
+    Write-Host "   ---------------"
     EntrySelection -key "1: " -value "Registry Stuff"
     EntrySelection -key "2: " -value "Delete Temporary Files"
     EntrySelection -key "B: " -value "Back to Main Menu"
@@ -108,7 +120,7 @@ do {
             do {
                 $downloadOption = Read-Host "Select a download option"
                 switch ($downloadOption) {
-                    '1' { 'Downloading something (download 1)' }
+                    '1' {Show-DriverDownloadMenu}
                     '2' { 'Downloading something (download 2)' }
                     'q' {ClearExit}
                 }
