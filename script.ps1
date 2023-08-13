@@ -23,17 +23,11 @@ function Show-CustomMenu
 
 function Show-DownloadMenu
 {
+
     Clear-Host
-    Write-Host -NoNewline -ForegroundColor Yellow "1: "
-    Write-Host "Drivers"
-    Write-Host -NoNewline -ForegroundColor Yellow "2: "
-    Write-Host "Software"
-    # Write-Host -NoNewline -ForegroundColor Yellow "3: "
-    # Write-Host "idk yet"
-    # Write-Host -NoNewline -ForegroundColor Yellow "4: "
-    # Write-Host "idk yet"
-    Write-Host -NoNewline -ForegroundColor Yellow "B: "
-    Write-Host "Back to Main Menu"
+    EntrySelection -key "1: " -value "Drivers"
+    EntrySelection -key "2: " -value "Software"
+    EntrySelection -key "B: " -value "Back to Main Menu"
 
 }
 
@@ -41,12 +35,9 @@ function Show-DownloadMenu
 function Show-DriverDownloadMenu
 {
     Clear-Host
-    Write-Host -NoNewline -ForegroundColor Yellow "1: "
-    Write-Host "Audio"
-    Write-Host -NoNewline -ForegroundColor Yellow "2: "
-    Write-Host "Graphics"
-    Write-Host -NoNewline -ForegroundColor Yellow "B: "
-    Write-Host "Back to Main Menu"
+    EntrySelection -key "1: " -value "Audio"
+    EntrySelection -key "2: " -value "Graphics"
+    EntrySelection -key "B: " -value "Back to Main Menu"
 
  
 
@@ -55,12 +46,10 @@ function Show-OptimizationMenu
 {
 
     Clear-Host
-    Write-Host -NoNewline -ForegroundColor Yellow "1: "
-    Write-Host "Registry Stuff"
-    Write-Host -NoNewline -ForegroundColor Yellow "2: "
-    Write-Host "Delete Temporary Files"
-    Write-Host -NoNewline -ForegroundColor Yellow "B: "
-    Write-Host "Back to Main Menu"
+    EntrySelection -key "1: " -value "Registry Stuff"
+    EntrySelection -key "2: " -value "Delete Temporary Files"
+    EntrySelection -key "B: " -value "Back to Main Menu"
+
 }
 
 
@@ -71,6 +60,18 @@ Show-CustomMenu
 function ClearExit {
     Clear-Host
     exit
+}
+
+
+function EntrySelection {
+
+    param (
+        [string]$key = 'default key',
+        [string]$value = 'default value'
+    ) 
+    Write-Host -NoNewline -ForegroundColor Yellow "${key}"
+    Write-Host "$value"
+
 }
 function CleanTempAndPrefetchFiles {
     Clear-Host
