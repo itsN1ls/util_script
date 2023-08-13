@@ -7,12 +7,16 @@ function Show-CustomMenu
     )
 
     Clear-Host
-    
-    Write-Host "1: Download Stuff"
-    Write-Host "2: Optimization Stuff"
-    # Write-Host "3: Submenu 2"
-    # Write-Host "4: Submenu 3"
-    Write-Host "Q: Exit"
+    Write-Host -NoNewline -ForegroundColor Yellow "1: "
+    Write-Host "Download Stuff"
+    Write-Host -NoNewline -ForegroundColor Yellow "2: "
+    Write-Host "Optimization Stuff"
+    # Write-Host -NoNewline -ForegroundColor Yellow "3: "
+    # Write-Host "Submenu 2"
+    # Write-Host -NoNewline -ForegroundColor Yellow "4: "
+    # Write-Host "Submenu 3"
+    Write-Host -NoNewline -ForegroundColor Yellow "Q: "
+    Write-Host "Exit"
     Write-Host ""
     Write-host ""
 }
@@ -20,23 +24,43 @@ function Show-CustomMenu
 function Show-DownloadMenu
 {
     Clear-Host
-
-    Write-Host "1: Drivers"
-    Write-Host "2: Software"
-    # Write-Host "3: idk yet"
-    # Write-Host "4: idk yet"
-    Write-Host "B: Back to Main Menu"
+    Write-Host -NoNewline -ForegroundColor Yellow "1: "
+    Write-Host "Drivers"
+    Write-Host -NoNewline -ForegroundColor Yellow "2: "
+    Write-Host "Software"
+    # Write-Host -NoNewline -ForegroundColor Yellow "3: "
+    # Write-Host "idk yet"
+    # Write-Host -NoNewline -ForegroundColor Yellow "4: "
+    # Write-Host "idk yet"
+    Write-Host -NoNewline -ForegroundColor Yellow "B: "
+    Write-Host "Back to Main Menu"
 
 }
 
+
+function Show-DriverDownloadMenu
+{
+    Clear-Host
+    Write-Host -NoNewline -ForegroundColor Yellow "1: "
+    Write-Host "Audio"
+    Write-Host -NoNewline -ForegroundColor Yellow "2: "
+    Write-Host "Graphics"
+    Write-Host -NoNewline -ForegroundColor Yellow "B: "
+    Write-Host "Back to Main Menu"
+
+ 
+
+}
 function Show-OptimizationMenu
 {
 
     Clear-Host
-
-    Write-Host "1: Registry Stuff"
-    Write-Host "2: Delete Temporary Files"
-    Write-Host "B: Back to Main Menu"
+    Write-Host -NoNewline -ForegroundColor Yellow "1: "
+    Write-Host "Registry Stuff"
+    Write-Host -NoNewline -ForegroundColor Yellow "2: "
+    Write-Host "Delete Temporary Files"
+    Write-Host -NoNewline -ForegroundColor Yellow "B: "
+    Write-Host "Back to Main Menu"
 }
 
 
