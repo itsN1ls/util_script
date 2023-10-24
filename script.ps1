@@ -1,4 +1,4 @@
-# Menus
+
 function EntrySelection {
 
     param (
@@ -55,6 +55,82 @@ function Show-DriverDownloadMenu
  
 
 }
+
+function Show-SoftwareDownloadMenu
+{
+    Clear-Host
+    Write-Host -NoNewline "---------------   "
+    Write-Host -ForegroundColor Yellow "Software" -NoNewline
+    Write-Host "   ---------------"
+    EntrySelection -key "1: " -value "VS Code"
+    EntrySelection -key "2: " -value "IntelliJ Community Edition"
+    EntrySelection -key "B: " -value "Back to Download Menu"
+    Write-Host ""
+    Write-Host ""
+    
+    do {
+        $choice = Read-Host "Select a software to download (1/2/B): "
+        switch ($choice) {
+            '1' {
+                DownloadSoftware "VS Code" "https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user"
+                Show-SoftwareDownloadMenu
+            }
+            '2' {
+                DownloadSoftware "IntelliJ Community Edition" "https://download.jetbrains.com/idea/ideaIC-2023.2.3.exe"
+                Show-SoftwareDownloadMenu
+            }
+            'B' {
+                Show-DownloadMenu
+            }
+            default {
+                Write-Host "Invalid choice. Please select a valid option."
+            }
+        }
+    } while ($choice -notin '1', '2', 'B')
+}
+
+function DownloadSoftware($softwareName, $downloadUrl)
+{
+    $downloadDirectory = "C:\Downloads"
+    if (-not (Test-Path -Path $downloadDirectory)) {
+        New-Item -Path $downloadDirectory -ItemType Directory
+    }
+
+    Write-Host "Downloading $softwareName..."
+
+    $downloadPath = Join-Path -Path $downloadDirectory -ChildPath "$softwareName.exe"
+    
+    
+    $curlCommand = "curl -o `"$downloadPath`" `"$downloadUrl`""
+    Invoke-Expression $curlCommand
+
+    
+    while (-not (Test-Path -Path $downloadPath)) {
+        Start-Sleep -Seconds 1  
+    }
+
+    Write-Host "$softwareName downloaded to $downloadPath"
+
+    
+    Write-Host "Opening $softwareName..."
+    Start-Process -FilePath $downloadPath
+    
+
+    Read-Host "Install the software like you normally would. Press Enter when you're done"
+    
+
+    
+    Remove-Item -Path $downloadPath -Force
+
+    Write-Host "Deleted $softwareName installer file."
+
+    
+}
+
+
+
+
+
 function Show-OptimizationMenu
 {
 
@@ -70,9 +146,9 @@ function Show-OptimizationMenu
 }
 
 
-# Show main menu
+
 Show-CustomMenu
-# Functions that do some stuf
+
 
 function ClearExit {
     Clear-Host
@@ -83,7 +159,7 @@ function ClearExit {
 
 function CleanTempAndPrefetchFiles {
     Clear-Host
-    # Clean current users temporary files
+    
     Get-ChildItem -Path $env:TEMP | ForEach-Object {
         try {
             Remove-Item -Path $_.FullName -Force -Recurse -ErrorAction Stop
@@ -92,7 +168,7 @@ function CleanTempAndPrefetchFiles {
         }
     }
     Write-Host "Deleted User Temp files successfully"
-    # Clean system temporary files
+    
     $systemTempPath = "C:\Windows\Temp"
     Get-ChildItem -Path $systemTempPath | ForEach-Object {
         try {
@@ -102,7 +178,7 @@ function CleanTempAndPrefetchFiles {
         }
     }
     Write-Host "Deleted System Temp files successfully."
-    # Clean prefetch files
+    
     $prefetchPath = "C:\Windows\Prefetch"
     Remove-Item -Path $prefetchPath\* -Force -Recurse
     Write-Host "Deleted Prefetch files successfully"
@@ -121,7 +197,7 @@ do {
                 $downloadOption = Read-Host "Select a download option"
                 switch ($downloadOption) {
                     '1' {Show-DriverDownloadMenu}
-                    '2' { 'Downloading something (download 2)' }
+                    '2' {Show-SoftwareDownloadMenu}
                     'q' {ClearExit}
                 }
             } while ($downloadOption -ne 'B')
@@ -140,10 +216,10 @@ do {
             Show-CustomMenu
         }
         '3' {
-            # Submenu 2 logic
+            
         }
         '4' {
-            # Submenu 3 logic
+            
         }
         'q' {
             ClearExit
